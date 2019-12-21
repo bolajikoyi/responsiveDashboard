@@ -1,0 +1,42 @@
+
+footer {
+    position: absolute;
+    
+    bottom: 0;
+    left: 0;
+    padding: 0px;
+
+    
+    
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    
+    
+    
+}
+
+  #id1{
+        
+        height: 100%;
+        width: auto;
+        
+        
+        margin: 0px 0px 0px 30px;
+        
+        
+
+    }
+
+
+
+   #id2{
+    
+        
+        height: 100%;
+        width: auto;
+        
+        margin: 0px 0px 10px 260px;
+        
+
+    }

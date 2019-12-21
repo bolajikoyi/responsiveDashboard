@@ -1,0 +1,158 @@
+/* Simple dashboard grid CSS */
+
+/* Assign grid instructions to our parent grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 50px 1fr auto;
+    grid-template-areas:
+    
+    "sidenav header1"
+    "sidenav main"
+    "sidenav footer-container";
+    height: 100vh;
+  }
+  
+  /* Give every child element its grid name */
+  .header {
+    grid-area: header1;
+    background-color: white;
+  }
+  
+  .sidenav {
+    grid-area: sidenav;
+    background-color: #394263;
+  }
+  
+  .main {
+    grid-area: main;
+    background-color: #8fd4d9;
+  }
+  
+  .footer {
+    grid-area: footer-container;
+    background-color: #648ca6;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background-color: white;
+
+  }
+
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 16px;
+    background-color: white;
+
+  }
+
+  .footer_items{
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+  }
+  .footer_items_column{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 100px;
+    
+}
+
+.footer_items_column1{
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+#footer-extend{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  background-color:gray;
+  width: 102%;
+  padding:0px 10px;
+  
+}
+
+#footer-extend1{
+  padding:0px 5px;
+ 
+}
+
+
+#footer-extend1:hover{
+  opacity: 0.4;
+}
+a{
+    color: black;
+}
+
+.sidenav {
+    display: flex; /* Will be hidden on mobile */
+    flex-direction: column;
+    grid-area: sidenav;
+    background-color:grey;
+  }
+  .sidenav__list {
+    padding: 0;
+    margin-top: 85px;
+    list-style-type: none;
+  }
+  .sidenav__list-item {
+    padding: 10px 10px 10px 10px;
+    color: #ddd;
+  }
+  .sidenav__list-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    
+
+    
+  }
+
+  .main-header1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    height: 250px; /* Force our height since we don't have actual content yet */
+    
+    background-color: #e3e4e6;
+    color: slategray;
+  }
+
+  #main-header2 {
+    display: flex;
+    justify-content: center;
+    justify-items: auto;
+    height: inherit; /* Force our height since we don't have actual content yet */
+    background-color: white;
+    color: slategray;
+    width: 90%;
+    margin: 0px 5px;
+  }
+  .b-footer_social-link:hover{
+    opacity: 0.4;
+  }
+  .footer_items_column1:hover{
+    opacity: 0.4;
+  }
