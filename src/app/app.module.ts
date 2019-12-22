@@ -7,19 +7,23 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FacebookModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

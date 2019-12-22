@@ -10,7 +10,7 @@
     "sidenav header1"
     "sidenav main"
     "sidenav footer-container";
-    height: 100vh;
+    
   }
   
   /* Give every child element its grid name */
@@ -162,7 +162,9 @@ a{
 
   .b-footer_social-link:hover{
     opacity: 0.4;
+    
   }
   .footer_items_column1:hover{
     opacity: 0.4;
+    
   }
