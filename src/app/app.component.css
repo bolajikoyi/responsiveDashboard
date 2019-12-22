@@ -26,7 +26,7 @@
   
   .main {
     grid-area: main;
-    background-color: #8fd4d9;
+    background-color: #e3e4e6;
   }
   
   .footer {
@@ -150,6 +150,16 @@ a{
     width: 90%;
     margin: 0px 5px;
   }
+  #main-control {
+    display: flex;
+    justify-content: center;
+    height: inherit; /* Force our height since we don't have actual content yet */
+    background-color: white;
+    color: slategray;
+    width: 90%;
+    margin: 0px 5px;
+  }
+
   .b-footer_social-link:hover{
     opacity: 0.4;
   }
