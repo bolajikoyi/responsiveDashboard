@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,12 +11,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FacebookModule } from 'ngx-facebook';
+import { Plot1Component } from './plot1/plot1.component';
+import { Plot2Component } from './plot2/plot2.component';
+import { Plot3Component } from './plot3/plot3.component';
+import { Plot4Component } from './plot4/plot4.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    Plot1Component,
+    Plot2Component,
+    Plot3Component,
+    Plot4Component,
+    
   
   ],
   imports: [
@@ -25,7 +35,8 @@ import { FacebookModule } from 'ngx-facebook';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FacebookModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
 
   ],
   providers: [],
