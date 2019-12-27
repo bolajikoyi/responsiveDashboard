@@ -4,7 +4,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: 150px 1fr;
-    grid-template-rows: 50px 1fr auto;
+    grid-template-rows: 50px auto auto;
     grid-template-areas:
     
     "sidenav header1"
@@ -133,7 +133,7 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px;
+    margin: 10px;
     height: 250px; /* Force our height since we don't have actual content yet */
     
     background-color: #e3e4e6;
@@ -152,12 +152,13 @@ a{
   }
   #main-control {
     display: flex;
-    justify-content: center;
-    height: inherit; /* Force our height since we don't have actual content yet */
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px; /* Force our height since we don't have actual content yet */
     background-color: white;
     color: slategray;
     width: 90%;
-    margin: 0px 5px;
+    margin: 5px 5px;
   }
   .b-footer_social-link{
     cursor: pointer;
@@ -192,4 +193,48 @@ a{
   
   #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+  mat-slider {
+    justify-content: center;
+    height: inherit; /* Force our height since we don't have actual content yet */
+    background-color: white;
+    color: slategray;
+    width: 90%;
+    margin: 0px 5px;
+  }
+
+  .example-h2 {
+    font-size: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  
+  .mat-slider-horizontal {
+    padding: 0px;
+    width: 200px;
+    height: 35px;
+  }
+  
+  .mat-slider-vertical {
+    height: 300px;
+    padding: 0px;
+  }
+  
+  .card{
+    float:left
+  }
+  .cardSlider{
+    float:left;
   }

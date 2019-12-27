@@ -47,25 +47,84 @@
 
         <div class="main-header">
                 <div class="main-header1">
-                  <div id="main-header2" style="margin-left: 0px;">Plot1</div>
-                  <div id="main-header2" style="margin-right: 0px;">Plot2</div>
+                  <mat-card id="main-header2" style="margin-left: 0px; padding: 0px;">Plot1</mat-card>
+                  <mat-card id="main-header2" style="margin-right: 0px; padding: 0px;">Plot2</mat-card>
                 </div>
-                <div class="main-header1" style="margin-top: 0px;">
-                  <div id="main-header2" style="margin-left: 0px;">Plot3</div>
-                  <div id="main-header2" style="margin-right: 0px;">Plot4</div>
+                <div class="main-header1" style="margin-top: 0px; margin-bottom: 5px;">
+                  <mat-card id="main-header2" style="margin-left: 0px; padding: 0px;">Plot3</mat-card>
+                  <mat-card id="main-header2" style="margin-right: 0px; padding: 0px;">Plot4</mat-card>
                 </div>
-                <div class="main-header1"  style="height: 75px; margin-top: 0px;">
-                    <div id="main-control" style="margin-left: 0px;">Control1</div>
-                    <div id="main-control" >Control2</div>
-                    <div id="main-control">Control3</div>
-                    <div id="main-control">Control4</div>
-                    <div id="main-control">Status1</div>
-                    <div id="main-control" style="margin-right: 0px;">Status2</div>
+
+
+
+                <div class="main-header1"  style="height: 125px; margin-top: 0px;">
+                    <mat-card id="main-control" style="margin-left: 0px;">
+                      <h2 style="margin:0%; padding-left: 5px; padding-bottom: 0px;" class="example-h2">Eq: Fcut</h2>
+                      <mat-card-content>
+                    <mat-slider style="width: 150px;">
+
+                    </mat-slider></mat-card-content>
+                    <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                    </mat-form-field>
+                  </mat-card>
+
+                    <mat-card id="main-control">
+                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">W1_g</h2>
+                      <mat-card-content>
+                      <mat-slider style="width: 150px;">
+
+                    </mat-slider></mat-card-content>
+                    <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                    </mat-form-field>
+                  </mat-card>
+
+                    <mat-card id="main-control">
+                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">W_m(Upper Bound)</h2>
+                      <mat-card-content>
+                      <mat-slider style="width: 150px;">
+
+                    </mat-slider></mat-card-content>
+                    <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                    </mat-form-field>
+                  </mat-card>
+
+                    <mat-card id="main-control">
+                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Circle Radius Around Nyquist</h2>
+                      <mat-card-content>
+                   <mat-slider style="width: 150px;">
+
+                    </mat-slider></mat-card-content>
+                    <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                    </mat-form-field>
+                  </mat-card>
+
+                  <mat-card id="main-control" [ngDraggable]="draggable">
+                  <mat-card-content  *ngIf="isInstability" style=" height: inherit; background-color:red">
+                    <h4 style="align-items: center;">System Is Unstable</h4>
+                  </mat-card-content>
+                  <mat-card-content  *ngIf="!isInstability" style=" height: inherit; background-color:lightskyblue">
+                    <h4 style="text-align: center;">System Is Stable</h4>
+                  </mat-card-content>
+                  </mat-card>
+
+                  <mat-card id="main-control" style="margin-right: 0px;" [ngDraggable]="draggable">
+                  <mat-card-content  *ngIf="isItGreaterThanAmp" style=" height: inherit; background-color:red">
+                  <h4 style="text-align: center;">Maximum Amplification exceeded</h4>
+                  </mat-card-content>
+                  <mat-card-content  *ngIf="!isItGreaterThanAmp" style=" height: inherit; background-color:lightskyblue">
+                  <h4 style="text-align: center;">Amplification Not Exceeded</h4>
+                  </mat-card-content>
+                  </mat-card>
+                   
                 </div>
         </div>
 
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         
+
           
 
   </main>
