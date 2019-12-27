@@ -22,9 +22,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-              
             ],
             "styles": [
+              "src/custom-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
@@ -34,8 +34,6 @@
               "src/assets/scrollup.js",
               "node_modules/chart.js/Chart.min.js",
               "node_modules/angular-chart.js/dist/angular-chart.min.js"
-
-
             ]
           },
           "configurations": {
@@ -130,6 +128,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "responsiveDashboard"
 }
