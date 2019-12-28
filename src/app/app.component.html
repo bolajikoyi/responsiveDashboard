@@ -58,10 +58,15 @@
 
 
                 <div class="main-header1"  style="height: 125px; margin-top: 0px;">
-                    <mat-card id="main-control" style="margin-left: 0px;">
-                      <h2 style="margin:0%; padding-left: 5px; padding-bottom: 0px;" class="example-h2">Eq: Fcut</h2>
+                    <mat-card id="main-control" style="margin-left: 0px;" >
+                      <h2 style="margin:0%; padding-left: 5px; padding-bottom: 0px;" class="example-h2">Fcut</h2>
                       <mat-card-content>
-                    <mat-slider style="width: 150px;">
+                    <mat-slider style="width: 150px;" thumbLabel 
+                    tickInterval="max_eq_fcut/100"
+                    [max]="max_eq_fcut"
+                    [min]="min_eq_fcut"
+                    [(ngModel)]="value_eq_fcut"
+                    (input)="fcut_update($event)">
 
                     </mat-slider></mat-card-content>
                     <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
@@ -72,33 +77,50 @@
                     <mat-card id="main-control">
                       <h2 style="margin:0%; padding-left: 5px;" class="example-h2">W1_g</h2>
                       <mat-card-content>
-                      <mat-slider style="width: 150px;">
+                      <mat-slider style="width: 150px;" thumbLabel
+                      tickInterval="max_w1_g/100"
+                      [max]="max_w1_g"
+                      [min]="min_w1_g"
+                      [(ngModel)]="value_w1_g"
+                      (input)="w1_g_update($event)">
 
                     </mat-slider></mat-card-content>
                     <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
-                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_w1_g" (keyup)="w1_g_update($event)">
                     </mat-form-field>
                   </mat-card>
 
                     <mat-card id="main-control">
                       <h2 style="margin:0%; padding-left: 5px;" class="example-h2">W_m(Upper Bound)</h2>
                       <mat-card-content>
-                      <mat-slider style="width: 150px;">
+                      <mat-slider style="width: 150px;" thumbLabel
+                      tickInterval="max_W_m/100"
+                      [max]="max_W_m"
+                      [min]="min_W_m"
+                      [step] = "step_min_W_m"
+                      [(ngModel)]="value_W_m"
+                      (input)="update_isInstabilty($event)">
 
                     </mat-slider></mat-card-content>
                     <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
-                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_W_m" (keyup)="update_isInstabilty($event)">
                     </mat-form-field>
                   </mat-card>
 
                     <mat-card id="main-control">
                       <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Circle Radius Around Nyquist</h2>
                       <mat-card-content>
-                   <mat-slider style="width: 150px;">
+                   <mat-slider style="width: 150px; " thumbLabel
+                   tickInterval="max_nyquistRadius/100"
+                   [max]="max_nyquistRadius"
+                   [min]="min_nyquistRadius"
+                   [step] = "step_nyquistRadius"
+                   [(ngModel)]="value_nyquistRadius"
+                   (input)="isGreaterThanAmp($event)">
 
                     </mat-slider></mat-card-content>
                     <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
-                      <input matInput type="number" placeholder="value" [(ngModel)]="value_eq_fcut" (keyup)="fcut_update($event)">
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_nyquistRadius" (keyup)="isGreaterThanAmp($event)">
                     </mat-form-field>
                   </mat-card>
 
@@ -111,13 +133,15 @@
                   </mat-card-content>
                   </mat-card>
 
-                  <mat-card id="main-control" style="margin-right: 0px;" [ngDraggable]="draggable">
+                  <mat-card id="main-control" style="margin-right: 0px; padding: 2px 5px;" [ngDraggable]="draggable">
                   <mat-card-content  *ngIf="isItGreaterThanAmp" style=" height: inherit; background-color:red">
                   <h4 style="text-align: center;">Maximum Amplification exceeded</h4>
                   </mat-card-content>
                   <mat-card-content  *ngIf="!isItGreaterThanAmp" style=" height: inherit; background-color:lightskyblue">
-                  <h4 style="text-align: center;">Amplification Not Exceeded</h4>
+                  <h4 style="text-align: center;">Amplification Is Not Exceeded</h4>
+                  
                   </mat-card-content>
+                  <div class="example-margin" >Max Amp.: {{maxAmplification}}</div>
                   </mat-card>
                    
                 </div>

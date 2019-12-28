@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import { AngularDraggableModule } from 'angular2-draggable';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -54,8 +55,8 @@ import { ShelvingCutService  } from './formulars/shelving-cut.service';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    AngularDraggableModule
-
+    AngularDraggableModule,
+   
   ],
   providers: [DataService,
     FilterService,
@@ -64,4 +65,6 @@ import { ShelvingCutService  } from './formulars/shelving-cut.service';
     ShelvingCutService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}
