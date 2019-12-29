@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   EQ_mag: number;
 
   // Second Order Controller variables
-  fp = 200;
+  fp :number = 200;
   fz = 400;
   cp = 0.99486;
   cz = 0.91985;
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
 
   T1: any;
   T1_Mag: any;
-  W_mMul_T1_Abs: any; // note do actual calculation with given values to get W_mMul_T1_Abs(0 is an assumed value)
+  W_mMul_T1_Abs: any; // note: do actual calculation with given values to get W_mMul_T1_Abs(0 is an assumed value)
   isInstability = false;
 
   isItGreaterThanAmp = false;
@@ -96,8 +96,7 @@ export class AppComponent implements OnInit {
    this.initFacebookService();
    this.NFFT = 8192;
    this.fs = 48 * Math.pow(10, 3);
-   this._DataService.getJSON().subscribe(data => {
-    this.s_ls = data;
+   this._DataService.getJSON().subscribe(data => {this.s_ls = data;
       this.performOperation();
    });
 

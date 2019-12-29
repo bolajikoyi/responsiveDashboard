@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
@@ -8,6 +8,9 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./plot2.component.css']
 })
 export class Plot2Component implements OnInit {
+
+  @Input() f_vec: any;
+  @Input() W1_mag: any;
 
   constructor() { }
 

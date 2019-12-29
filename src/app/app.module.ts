@@ -25,7 +25,10 @@ import { DataService } from './data.service';
 import { FilterService  } from './formulars/filter.service';
 import { Iir2ndOrderConjCmplxService } from './formulars/iir-2nd-order-conj-cmplx.service';
 import { PolyService  } from './formulars/poly.service';
-import { ShelvingCutService  } from './formulars/shelving-cut.service';
+import { ShelvingCutService  } from './formulars/shelving-cut.service'
+import { PlotlyModule } from 'angular-plotly.js';
+import * as PlotlyJS from '../assets/plotly.js'
+
 
 
 
@@ -56,6 +59,7 @@ import { ShelvingCutService  } from './formulars/shelving-cut.service';
     MatFormFieldModule,
     MatInputModule,
     AngularDraggableModule,
+  
    
   ],
   providers: [DataService,
