@@ -8,6 +8,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { AngularDraggableModule } from 'angular2-draggable';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import { jqxInputModule }    from 'jqwidgets-ng/jqxinput';
+import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
+import { jqxSliderModule } from 'jqwidgets-ng/jqxslider';
+
 
 
 
@@ -44,7 +48,7 @@ import * as PlotlyJS from '../assets/plotly.js'
     Plot2Component,
     Plot3Component,
     Plot4Component,
-    
+  
   
   ],
   imports: [
@@ -62,6 +66,9 @@ import * as PlotlyJS from '../assets/plotly.js'
     MatFormFieldModule,
     MatInputModule,
     AngularDraggableModule,
+    jqxInputModule,
+    jqxChartModule,
+    jqxSliderModule,
   
    
   ],

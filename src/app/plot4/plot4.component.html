@@ -1,12 +1,12 @@
 
   <div>
-        <div style="display: block">
-          <canvas baseChart
-            [datasets]="radarChartData"
-            [options]="radarChartOptions"
-            [labels]="radarChartLabels"
-            [chartType]="radarChartType">
-          </canvas>
-        </div>
+    <jqxChart #myChart
+    [width]="500" [height]="260"
+    [title]="'Sales volume and revenue by city'"
+    [description]="'(revenue in thousands)'"
+    [showLegend]="true" [enableAnimations]="false" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="dataset" [xAxis]="xAxis" 
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>
       </div>
    

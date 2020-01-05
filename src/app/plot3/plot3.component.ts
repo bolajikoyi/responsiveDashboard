@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
-import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import { Color, Label } from 'ng2-charts';
 
-declare var numeric:any;
 
 @Component({
   selector: 'app-plot3',
@@ -12,117 +10,68 @@ declare var numeric:any;
 })
 export class Plot3Component implements OnInit {
 
-  @Input() magnitudeOfH1: any;
+  @Input() f_vec: any;
   @Input() H1_mag: any;
   @Input() maxAmplification: any;
-
-
-  public lineChartData: ChartDataSets[] = [
-    
-    { data: [this.magnitudeOfH1], label: 'Data 1', },
-    { data: [21, 38, 60, 99, 26, 47, 70, 13, 62, 74], label: 'Data 2' },
-    { data: [48, 98, 50, 29, 56, 77, 10, 22, 32, 54], label: 'Data 3' }
-   
-  ];
-
-  
-  public lineChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-  public lineChartOptions: (ChartOptions & { annotation: any }) = {
-    responsive: true,
-    scales: {
-      // We use this empty structure as a placeholder for dynamic theming.
-      xAxes: [{}],
-      yAxes: [
-
-        {
-          id: 'y-axis-1',
-          position: 'left',
-          gridLines: {
-            color: 'rgba(255,0,0,0.3)',
-          },
-          ticks: {
-            fontColor: 'red',
-          }
-        }
-      ]
-    },
-    annotation: {
-      annotations: [
-        {
-          type: 'line',
-          mode: 'vertical',
-          scaleID: 'x-axis-0',
-          value: 'March',
-          borderColor: 'orange',
-          borderWidth: 2,
-          label: {
-            enabled: true,
-            fontColor: 'orange',
-            content: 'LineAnno'
-          }
-        },
-      ],
-    },
-  };
-  public lineChartColors: Color[] = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
-    },
-    { // red
-      backgroundColor: 'rgba(255,0,0,0.3)',
-      borderColor: 'red',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
-  ];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
-  public lineChartPlugins = [pluginAnnotations];
-
-
 
   constructor() { }
 
   ngOnInit() {
-    
   }
 
-
-
-
-  // events
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-
-  public changeColor() {
-    this.lineChartColors[2].borderColor = 'green';
-    this.lineChartColors[2].backgroundColor = `rgba(0, 255, 0, 0.3)`;
-  }
-
-  public changeLabel() {
-    this.lineChartLabels[2] = ['1st Line', '2nd Line'];
-    // this.chart.update();
-  }
+  months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  source: any =
+  {
+      datatype: 'tab',
+      datafields: [
+          { name: 'Date' },
+          { name: 'Referral' },
+          { name: 'SearchPaid' },
+          { name: 'SearchNonPaid' }
+      ],
+      url: '../../assets/website_analytics.txt'
+ 
+  
 }
+
+  dataAdapter: any = new jqx.dataAdapter(this.source, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + this.source.url + '" : ' + error); } });
+  padding: any = { left: 10, top: 5, right: 10, bottom: 5 };
+  titlePadding: any = { left: 50, top: 0, right: 0, bottom: 10 };
+  xAxis: any =
+  {
+      dataField: 'Date',
+      type: 'date',
+      baseUnit: 'day',
+      valuesOnTicks: false,
+      labels:
+      {
+          formatFunction: (value: any): string => {
+              return value.getDate();
+          }
+      },
+      toolTipFormatFunction: (value: any): string => {
+          return value.getDate() + '-' + this.months[value.getMonth()] + '-' + value.getFullYear();
+      }
+  };
+  valueAxis: any =
+  {
+      unitInterval: 500,
+      minValue: 0,
+      maxValue: 4500,
+      labels: { horizontalAlignment: 'right' },
+      title: { text: 'Daily Visits<br>' }
+  };
+  seriesGroups: any =
+  [
+      {
+          type: 'stackedline',
+          series: [
+              { dataField: 'Referral', displayText: 'Referral Traffic' },
+              { dataField: 'SearchPaid', displayText: 'Paid Search Traffic' },
+              { dataField: 'SearchNonPaid', displayText: 'Organic Search Traffic' }
+          ]
+      }
+  ];
+}
+
 

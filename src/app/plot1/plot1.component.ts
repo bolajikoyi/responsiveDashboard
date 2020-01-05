@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import { ReplaySubject, BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 declare var numeric:any;
 
@@ -13,21 +15,30 @@ declare var numeric:any;
 })
 export class Plot1Component implements OnInit {
 
-  @Input() magnitudeOfH1: any;
-  @Input() S_mag: any;
-  @Input() EQ_mag: any;
+
+  @Input() set 
+  slider1Value(val:number){
+    this.slider1Value$.next(val)
+  }
 
   
+public readonly slider1Value$ = new ReplaySubject<number>(1);
+
+  A:any[]=[21, 38, 60, 99, 26, 47, 70, 13, 62, 74];
+  A1:any =this.A;
 
 
 
   public lineChartData: ChartDataSets[] = [
     
-    { data: this.magnitudeOfH1, label: 'Data 1', },
-    { data: [21, 38, 60, 99, 26, 47, 70, 13, 62, 74], label: 'Data 2' },
+    
+    { data: this.A1, label: 'Data 2' },
     { data: [48, 98, 50, 29, 56, 77, 10, 22, 32, 54], label: 'Data 3' }
    
   ];
+
+  public lineChartDataTemp$= new BehaviorSubject<ChartDataSets[]>(this.lineChartData);
+  public lineChartData$: Observable<ChartDataSets[]>;
 
   
   public lineChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
@@ -103,7 +114,15 @@ export class Plot1Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+    this.lineChartData$ = combineLatest([this.lineChartDataTemp$, this.slider1Value$]).pipe(
+      map(([lineChartDataTemp, slider1Value]) => {
+       const data = [48, 98, 50, 29, 56, 77, 10, 22, 32, 54];
+        const newData = data.map(s => s * Math.log(slider1Value)*Math.log(s))
+        lineChartDataTemp[1].data = newData;
+        console.warn(newData)
+        return lineChartDataTemp
+      })
+    )
   }
 
 
@@ -116,6 +135,7 @@ export class Plot1Component implements OnInit {
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
+    console.warn("hello")
   }
 
 

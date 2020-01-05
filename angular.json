@@ -26,12 +26,13 @@
             "styles": [
               "src/custom-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css",
+              "node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css",
               "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/scrollup.js",
               "node_modules/chart.js/dist/Chart.min.js",
               "node_modules/angular-chart.js/dist/angular-chart.min.js"
             ]

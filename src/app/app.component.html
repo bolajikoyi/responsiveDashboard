@@ -48,9 +48,8 @@
         <div class="main-header">
                 <div class="main-header1">
                   <mat-card id="main-header2" style="margin-left: 0px; padding: 0px;">
-                    <app-plot1 style="width: inherit; height: inherit;"></app-plot1>
+                    <app-plot1 [slider1Value] ="slider1Value$| async " style="width: inherit; height: inherit;"></app-plot1>
                   </mat-card>
-
                   <mat-card id="main-header2" style="margin-right: 0px; padding: 0px;">
                     <app-plot2 style="width: inherit; height: inherit;"></app-plot2>
                   </mat-card>
@@ -59,7 +58,7 @@
                   <mat-card id="main-header2" style="margin-left: 0px; padding: 0px;">
                     <app-plot3 style="width: inherit; height: inherit;"></app-plot3>
                   </mat-card>
-                  <mat-card id="main-header2" style="margin-right: 0px; padding: 0px 0px 10px 0px;">
+                  <mat-card id="main-header2" style="margin-right: 0px; padding: 0px;">
                     <app-plot4 style="width: inherit; height: inherit;"></app-plot4>
                   </mat-card>
                 </div>
@@ -68,7 +67,7 @@
 
                 <div class="main-header1"  style="height: 125px; margin-top: 0px;">
                     <mat-card id="main-control" style="margin-left: 0px;" >
-                      <h2 style="margin:0%; padding-left: 5px; padding-bottom: 0px;" class="example-h2">Fcut</h2>
+                      <h2 style="margin:0%; padding-left: 5px; padding-bottom: 0px;" class="example-h2">Control for Plot 1</h2>
                       <mat-card-content>
                     <mat-slider style="width: 150px;" thumbLabel 
                     tickInterval="max_eq_fcut/100"
@@ -84,7 +83,7 @@
                   </mat-card>
 
                     <mat-card id="main-control">
-                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">W1_g</h2>
+                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Control for Plot 2</h2>
                       <mat-card-content>
                       <mat-slider style="width: 150px;" thumbLabel
                       tickInterval="max_w1_g/100"
@@ -100,7 +99,7 @@
                   </mat-card>
 
                     <mat-card id="main-control">
-                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Theta</h2>
+                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Control for Plot 3</h2>
                       <mat-card-content>
                       <mat-slider style="width: 150px;" thumbLabel
                       tickInterval="max_W_m/100"
@@ -117,21 +116,28 @@
                   </mat-card>
 
                     <mat-card id="main-control">
-                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Circle Radius Around Nyquist</h2>
+                      <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Change Polar Plot Start Angle</h2>
                       <mat-card-content>
-                   <mat-slider style="width: 150px; " thumbLabel
-                   tickInterval="max_nyquistRadius/100"
-                   [max]="max_nyquistRadius"
-                   [min]="min_nyquistRadius"
-                   [step] = "step_nyquistRadius"
-                   [(ngModel)]="value_nyquistRadius"
-                   (input)="isGreaterThanAmp($event)">
-
-                    </mat-slider></mat-card-content>
+                        <jqxSlider (onChange)="sliderStartAngle($event)"
+                        [width]="150" [min]="0" [max]="360" [step]="1" [(ngModel)]="value_nyquistRadius"
+                        [ticksFrequency]="20" [mode]="'fixed'">
+                    </jqxSlider></mat-card-content>
                     <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
-                      <input matInput type="number" placeholder="value" [(ngModel)]="value_nyquistRadius" (keyup)="isGreaterThanAmp($event)">
+                      <input matInput type="number" placeholder="value" [(ngModel)]="value_nyquistRadius" (keyup)="sliderStartAngle($event)">
                     </mat-form-field>
                   </mat-card>
+
+                  <mat-card id="main-control">
+                    <h2 style="margin:0%; padding-left: 5px;" class="example-h2">Rotate Polar Plot</h2>
+                    <mat-card-content>
+                      <jqxSlider (onChange)="sliderRotate($event)"
+                      [width]="150" [min]="80" [max]="360" [step]="1" [(ngModel)]="value_nyquistRadius1"
+                      [ticksFrequency]="20" [mode]="'fixed'">
+                  </jqxSlider></mat-card-content>
+                  <mat-form-field class="example-margin" style="padding-left: 5px; width: 150px;" >
+                    <input matInput type="number" placeholder="value" [(ngModel)]="value_nyquistRadius1" (keyup)="sliderRotate($event)">
+                  </mat-form-field>
+                </mat-card>
 
                   <mat-card id="main-control" [ngDraggable]="draggable">
                   <mat-card-content  *ngIf="isInstability" style=" height: inherit; background-color:red">
@@ -142,16 +148,7 @@
                   </mat-card-content>
                   </mat-card>
 
-                  <mat-card id="main-control" style="margin-right: 0px; padding: 2px 5px;" [ngDraggable]="draggable">
-                  <mat-card-content  *ngIf="isItGreaterThanAmp" style=" height: inherit; background-color:red">
-                  <h4 style="text-align: center;">Maximum Amplification exceeded</h4>
-                  </mat-card-content>
-                  <mat-card-content  *ngIf="!isItGreaterThanAmp" style=" height: inherit; background-color:lightskyblue">
-                  <h4 style="text-align: center;">Amplification Is Not Exceeded</h4>
-                  
-                  </mat-card-content>
-                  <div class="example-margin" >Max Amp.: {{maxAmplification}}</div>
-                  </mat-card>
+                 
                    
                 </div>
         </div>
@@ -222,7 +219,7 @@
         </div>
 
   </div>
-  <div class="footer_items">&copy; 2019 Omobolaji KOYI. All rights reserved.</div>
+  <div class="footer_items">&copy; 2020 Omobolaji KOYI. All rights reserved.</div>
         <div class="footer_items" id="footer-extend">
         <div class="footer_items">
          <div id="footer-extend1"><a href="" style="text-decoration: none;">Home</a></div>
