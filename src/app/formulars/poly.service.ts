@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 declare var numeric: any;
-declare var Plotly: any;
+
 
 @Injectable()
 export class PolyService {
@@ -39,6 +39,7 @@ export class PolyService {
       temp = pz.slice();
     }
       return pz;
+     
   }
 
 

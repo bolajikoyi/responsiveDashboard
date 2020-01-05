@@ -1,3 +1,16 @@
-<app-plot1>
-<canvas id="myChart" width="inherit" height="inherit"></canvas>
-</app-plot1>
+<div>
+
+    <div style="display: block;">
+        <canvas baseChart width="inherit" height="inherit"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+        </div>
+
+</div>

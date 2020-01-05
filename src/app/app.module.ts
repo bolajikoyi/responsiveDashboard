@@ -7,6 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { AngularDraggableModule } from 'angular2-draggable';
+import * as pluginAnnotations from 'chartjs-plugin-annotation';
 
 
 
@@ -28,6 +29,8 @@ import { PolyService  } from './formulars/poly.service';
 import { ShelvingCutService  } from './formulars/shelving-cut.service'
 import { PlotlyModule } from 'angular-plotly.js';
 import * as PlotlyJS from '../assets/plotly.js'
+
+
 
 
 

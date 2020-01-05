@@ -3,7 +3,7 @@ import { PolyService  } from './poly.service';
 import { FilterService  } from './filter.service';
 
 declare var numeric: any;
-declare var Plotly: any;
+
 
 @Injectable()
 export class Iir2ndOrderConjCmplxService {

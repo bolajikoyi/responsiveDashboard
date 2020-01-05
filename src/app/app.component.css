@@ -134,7 +134,7 @@ a{
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
-    height: 250px; /* Force our height since we don't have actual content yet */
+    height: 260px; /* Force our height since we don't have actual content yet */
     
     background-color: #e3e4e6;
     color: slategray;
@@ -143,7 +143,7 @@ a{
   #main-header2 {
     display: flex;
     justify-content: center;
-    justify-items: auto;
+    justify-items: center;
     height: inherit; /* Force our height since we don't have actual content yet */
     background-color: white;
     color: slategray;
@@ -159,6 +159,7 @@ a{
     color: slategray;
     width: 90%;
     margin: 5px 5px;
+    
   }
   .b-footer_social-link{
     cursor: pointer;

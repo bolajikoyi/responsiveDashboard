@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FilterService  } from './filter.service';
 
-declare var numeric: any;
-declare var Plotly: any;
-
 @Injectable()
 export class ShelvingCutService {
 
